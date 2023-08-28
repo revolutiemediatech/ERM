@@ -436,7 +436,12 @@
         <span><i class="fas fa-stethoscope"></i>E-Aduan</span>
       </a>
       <ul id="eAduan" class="collapse" aria-labelledby="eAduan" data-parent="#side-nav-accordion">
-        <li> <a href="{{ url('#') }}">Setting</a></li>
+        <li class="menu-item">
+          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#settingAduan" aria-expanded="false" aria-controls="settingAduan">Setting</a>
+          <ul id="settingAduan" class="collapse" aria-labelledby="settingAduan" data-parent="#pages">
+            <li> <a href="{{ url('#')}}">Nama Grup</a> </li>
+          </ul>
+        </li>
       </ul>
       <ul id="eAduan" class="collapse" aria-labelledby="eAduan" data-parent="#side-nav-accordion">
         <li> <a href="{{ url('#') }}">Data Aduan</a></li>
@@ -446,5 +451,142 @@
       </ul>
     </li>
     <!-- /E-Aduan -->
+
+    <!-- E-Prolanis -->
+    <li class="menu-item">
+      <a href="#" class="has-chevron" data-toggle="collapse" data-target="#eProlanis" aria-expanded="false" aria-controls="eProlanis">
+        <span><i class="fas fa-stethoscope"></i>E-Prolanis</span>
+      </a>
+      {{-- <ul id="eProlanis" class="collapse" aria-labelledby="eProlanis" data-parent="#side-nav-accordion">
+        <li class="menu-item">
+          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#settingAduan" aria-expanded="false" aria-controls="settingAduan">Setting</a>
+          <ul id="settingAduan" class="collapse" aria-labelledby="settingAduan" data-parent="#pages">
+            <li> <a href="{{ url('#')}}">Nama Grup</a> </li>
+          </ul>
+        </li>
+      </ul>
+      <ul id="eProlanis" class="collapse" aria-labelledby="eProlanis" data-parent="#side-nav-accordion">
+        <li> <a href="{{ url('#') }}">Data Aduan</a></li>
+      </ul>
+      <ul id="eProlanis" class="collapse" aria-labelledby="eProlanis" data-parent="#side-nav-accordion">
+        <li> <a href="{{ url('#') }}">Respon</a></li>
+      </ul> --}}
+    </li>
+    <!-- E-Prolanis -->
+
+    <!-- E-Messenger -->
+    <li class="menu-item">
+      <a href="#" class="has-chevron" data-toggle="collapse" data-target="#eMessenger" aria-expanded="false" aria-controls="eMessenger">
+        <span><i class="fas fa-stethoscope"></i>E-Messenger</span>
+      </a>
+      {{-- <ul id="eMessenger" class="collapse" aria-labelledby="eMessenger" data-parent="#side-nav-accordion">
+        <li class="menu-item">
+          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#settingAduan" aria-expanded="false" aria-controls="settingAduan">Setting</a>
+          <ul id="settingAduan" class="collapse" aria-labelledby="settingAduan" data-parent="#pages">
+            <li> <a href="{{ url('#')}}">Nama Grup</a> </li>
+          </ul>
+        </li>
+      </ul>
+      <ul id="eMessenger" class="collapse" aria-labelledby="eMessenger" data-parent="#side-nav-accordion">
+        <li> <a href="{{ url('#') }}">Data Aduan</a></li>
+      </ul>
+      <ul id="eMessenger" class="collapse" aria-labelledby="eMessenger" data-parent="#side-nav-accordion">
+        <li> <a href="{{ url('#') }}">Respon</a></li>
+      </ul> --}}
+    </li>
+    <!-- E-Messenger -->
+
+    <!-- E-Database -->
+    <li class="menu-item">
+      <a href="#" class="has-chevron" data-toggle="collapse" data-target="#eDatabase" aria-expanded="false" aria-controls="eDatabase">
+        <span><i class="fas fa-stethoscope"></i>E-Database</span>
+      </a>
+      {{-- <ul id="eDatabase" class="collapse" aria-labelledby="eDatabase" data-parent="#side-nav-accordion">
+        <li class="menu-item">
+          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#settingAduan" aria-expanded="false" aria-controls="settingAduan">Setting</a>
+          <ul id="settingAduan" class="collapse" aria-labelledby="settingAduan" data-parent="#pages">
+            <li> <a href="{{ url('#')}}">Nama Grup</a> </li>
+          </ul>
+        </li>
+      </ul>
+      <ul id="eDatabase" class="collapse" aria-labelledby="eDatabase" data-parent="#side-nav-accordion">
+        <li> <a href="{{ url('#') }}">Data Aduan</a></li>
+      </ul>
+      <ul id="eDatabase" class="collapse" aria-labelledby="eDatabase" data-parent="#side-nav-accordion">
+        <li> <a href="{{ url('#') }}">Respon</a></li>
+      </ul> --}}
+    </li>
+    <!-- E-Database -->
+
+    <!-- E-Screening -->
+    <li class="menu-item">
+      <a href="#" class="has-chevron" data-toggle="collapse" data-target="#eScreening" aria-expanded="false" aria-controls="eScreening">
+        <span><i class="fas fa-stethoscope"></i>E-Screening</span>
+      </a>
+      {{-- <ul id="eScreening" class="collapse" aria-labelledby="eScreening" data-parent="#side-nav-accordion">
+        <li class="menu-item">
+          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#settingAduan" aria-expanded="false" aria-controls="settingAduan">Setting</a>
+          <ul id="settingAduan" class="collapse" aria-labelledby="settingAduan" data-parent="#pages">
+            <li> <a href="{{ url('#')}}">Nama Grup</a> </li>
+          </ul>
+        </li>
+      </ul>
+      <ul id="eScreening" class="collapse" aria-labelledby="eScreening" data-parent="#side-nav-accordion">
+        <li> <a href="{{ url('#') }}">Data Aduan</a></li>
+      </ul>
+      <ul id="eScreening" class="collapse" aria-labelledby="eScreening" data-parent="#side-nav-accordion">
+        <li> <a href="{{ url('#') }}">Respon</a></li>
+      </ul> --}}
+    </li>
+    <!-- E-Screening -->
+
+    <!-- E-Perkesmas -->
+    <li class="menu-item">
+      <a href="#" class="has-chevron" data-toggle="collapse" data-target="#ePerkesmas" aria-expanded="false" aria-controls="ePerkesmas">
+        <span><i class="fas fa-stethoscope"></i>E-Perkesmas</span>
+      </a>
+      <ul id="ePerkesmas" class="collapse" aria-labelledby="ePerkesmas" data-parent="#side-nav-accordion">
+        <li class="menu-item">
+          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#settingPerkesmas" aria-expanded="false" aria-controls="settingPerkesmas">Setting</a>
+          <ul id="settingPerkesmas" class="collapse" aria-labelledby="settingPerkesmas" data-parent="#pages">
+            <li> <a href="{{ url('#')}}">Data Wilayah</a> </li>
+            <li> <a href="{{ url('#')}}">Penanggung Jawab</a> </li>
+          </ul>
+        </li>
+      </ul>
+      <ul id="ePerkesmas" class="collapse" aria-labelledby="ePerkesmas" data-parent="#side-nav-accordion">
+        <li class="menu-item">
+          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#validasiPerkesmas" aria-expanded="false" aria-controls="validasiPerkesmas">Validasi</a>
+          <ul id="validasiPerkesmas" class="collapse" aria-labelledby="validasiPerkesmas" data-parent="#pages">
+            <li> <a href="{{ url('#')}}">Data Valid</a> </li>
+            <li> <a href="{{ url('#')}}">Data Invalid</a> </li>
+            <li> <a href="{{ url('#')}}">Rekapitulasi</a> </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <!-- E-Perkesmas -->
+
+    <!-- E-Jiwa -->
+    <li class="menu-item">
+      <a href="#" class="has-chevron" data-toggle="collapse" data-target="#eJiwa" aria-expanded="false" aria-controls="eJiwa">
+        <span><i class="fas fa-stethoscope"></i>E-Jiwa</span>
+      </a>
+      {{-- <ul id="eJiwa" class="collapse" aria-labelledby="eJiwa" data-parent="#side-nav-accordion">
+        <li class="menu-item">
+          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#settingAduan" aria-expanded="false" aria-controls="settingAduan">Setting</a>
+          <ul id="settingAduan" class="collapse" aria-labelledby="settingAduan" data-parent="#pages">
+            <li> <a href="{{ url('#')}}">Nama Grup</a> </li>
+          </ul>
+        </li>
+      </ul>
+      <ul id="eJiwa" class="collapse" aria-labelledby="eJiwa" data-parent="#side-nav-accordion">
+        <li> <a href="{{ url('#') }}">Data Aduan</a></li>
+      </ul>
+      <ul id="eJiwa" class="collapse" aria-labelledby="eJiwa" data-parent="#side-nav-accordion">
+        <li> <a href="{{ url('#') }}">Respon</a></li>
+      </ul> --}}
+    </li>
+    <!-- E-Jiwa -->
   </ul>
 </aside>
