@@ -226,7 +226,7 @@
       </ul>
       <ul id="eUks" class="collapse" aria-labelledby="eUks" data-parent="#side-nav-accordion">
         <li class="menu-item">
-          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#screeningKes" aria-expanded="false" aria-controls="screeningKes">Screening Kesehatan Siswa Mandiri</a>
+          <a href="#" class="has-chevron" data-toggle="collapse" data-targetF="#screeningKes" aria-expanded="false" aria-controls="screeningKes">Screening Kesehatan Siswa Mandiri</a>
           <ul id="screeningKes" class="collapse" aria-labelledby="screeningKes" data-parent="#pages">
             {{-- <li> <a href="{{ url('#')}}">Data Screening</a> </li> --}}
             <li> <a href="{{ url('/admin/question')}}">Pertanyaan</a> </li>
@@ -550,7 +550,7 @@
           <a href="#" class="has-chevron" data-toggle="collapse" data-target="#settingPerkesmas" aria-expanded="false" aria-controls="settingPerkesmas">Setting</a>
           <ul id="settingPerkesmas" class="collapse" aria-labelledby="settingPerkesmas" data-parent="#pages">
             <li> <a href="{{ url('#')}}">Data Wilayah</a> </li>
-            <li> <a href="{{ url('#')}}">Penanggung Jawab</a> </li>
+            <li> <a href="{{ url('admin/penanggungjawab-eperkesmas')}}">Penanggung Jawab</a> </li>
           </ul>
         </li>
       </ul>

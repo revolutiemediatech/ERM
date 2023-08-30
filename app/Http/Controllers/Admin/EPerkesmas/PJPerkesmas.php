@@ -1,25 +1,29 @@
 <?php
 
-namespace App\Http\Controllers\Admin\EKonsultasi;
+namespace App\Http\Controllers\Admin\EPerkesmas;
 
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\UserModel;
 use App\Models\FaskesModel;
 use App\Models\PJKonsultasiModel;
+use App\Models\PJPerkesmasModel;
 use App\Models\TopikEKonsultasiModel;
 
-class PJKonsultasi extends Controller
+
+
+class PJPerkesmas extends Controller
 {
     // Untuk panggil view
-    private $views      = 'admin/eKonsultasi/pj';
+    private $views      = 'admin/ePerkesmas/pj';
 
     // Untuk keperluan redirect, hubungannya route / file web
-    private $url        = 'admin/penanggungjawab-eKonsultasi';
+    private $url        = 'admin/penanggungjawab-eperkesmas';
 
     // Title head
-    private $title      = 'Halaman Data Penanggung Jawab E-Konsultasi';
+    private $title      = 'Halaman Data Penanggung Jawab E-Perkesmas';
 
     public function __construct()
     {
@@ -35,7 +39,7 @@ class PJKonsultasi extends Controller
             'status'    => 1,
             'idFaskes'  => session()->get('idFaskes'),
         ];
-        $penanggung_jawab = PJKonsultasiModel::where($where)->first(); // cari kepsek yg statusnya 1
+        $penanggung_jawab = PJPerkesmasModel::where($where)->first(); // cari kepsek yg statusnya 1
         if (isset($penanggung_jawab)) {
             $users = UserModel::where('id', $penanggung_jawab['idUsers'])->get(); // tampilkan data guru sebagai kepsek
         } else {
@@ -46,7 +50,7 @@ class PJKonsultasi extends Controller
         $data = [
             'title'             => $this->title,
             'url'               => $this->url,
-            'page'              => 'Data Penanggung Jawab E-Konsultasi',
+            'page'              => 'Data Penanggung Jawab E-Perkesmas',
             'users'             => $users,
             'topik'             => $topik,
         ];
@@ -64,7 +68,7 @@ class PJKonsultasi extends Controller
         $data = [
             'title'         => $this->title,
             'url'           => $this->url,
-            'page'          => 'Tambah Data Penanggung Jawab E-Konsultasi',
+            'page'          => 'Tambah Data Penanggung Jawab E-Perkesmas',
             'users'         => $users,
             'faskes'        => $faskes
         ];
@@ -80,8 +84,8 @@ class PJKonsultasi extends Controller
             'idFaskes'          => $request->idFaskes,
         ];
         // echo json_encode($dataUser); die;
-        PJKonsultasiModel::create($dataUser);
-
+        PJPerkesmasModel::create($dataUser);
+        //dd($dataUser);
         // untuk update semua status jadi 0
         $where = [
             'idFaskes'  => session()->get('idFaskes'),
@@ -91,14 +95,14 @@ class PJKonsultasi extends Controller
             'status'    => 0 // update semua statusya jadi 0
         ];
         // cari yang statusnya 1, terus semua diupdate jadi 0
-        PJKonsultasiModel::where($where)->update($dataStatus);
+        PJPerkesmasModel::where($where)->update($dataStatus);
 
         // cek ada guru yg sama di tabel kepsek tidak
         $where2 = [
             'idFaskes' => session()->get('idFaskes'),
-            'idUsers' => $request->idUsers
+            'idUsers' => $request->idUsers,
         ];
-        $penanggung_jawab = PJKonsultasiModel::where($where2)->first();
+        $penanggung_jawab = PJPerkesmasModel::where($where2)->first();
         if (isset($penanggung_jawab)) { // kalo ada, update status. bukan tambah data guru di tabel kepsek
             $where1 = [
                 'idFaskes' => session()->get('idFaskes'),
@@ -107,16 +111,19 @@ class PJKonsultasi extends Controller
             $dataStatus1 = [
                 'status'    => 1 // update status guru tsb di tabel kepsek jadi 1
             ];
-            PJKonsultasiModel::where($where1)->update($dataStatus1);
+            PJPerkesmasModel::where($where1)->update($dataStatus1);
         } else { // kalo data guru tsb di tabel kepsek tidak ada, baru tambah baru. jadi gag ada nama yg sama di tabel kepsek
             // tambah data sekaligus aktifkan jadi status 1
             $dataPj = [
                 // 'idPSekolah'      => $request->idPSekolah,
                 'idFaskes'      => session()->get('idFaskes'),
                 'idUsers'       => $request->idUsers,
-                'status'        => 1
+                'status'        => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ];
-            PJKonsultasiModel::create($dataPj);
+            //dd($dataPj);
+            PJPerkesmasModel::create($dataPj);
         }
 
         return redirect("$this->url")->with('sukses', 'Data Penanggung Jawab E-Konsultasi berhasil di tambahkan');
@@ -125,7 +132,7 @@ class PJKonsultasi extends Controller
     public function edit($id)
     {
         // Get Data
-        $penanggung_jawab   = PJKonsultasiModel::where('id', $id)->first();
+        $penanggung_jawab   = PJPerkesmasModel::where('id', $id)->first();
         $users              = UserModel::all();
         $faskes             = FaskesModel::all();
 
@@ -153,7 +160,7 @@ class PJKonsultasi extends Controller
             'idFaskes'  => $request->idFaskes,
             'idUsers'   => $request->idUsers,
         ];
-        PJKonsultasiModel::where('id', $request->id)->update($dataPj);
+        PJPerkesmasModel::where('id', $request->id)->update($dataPj);
 
         // Response
         return redirect("$this->url")->with('sukses', 'Data Penanggung Jawab E-Konsultasi berhasil di edit');
