@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Admin\EPerkesmas;
 
-use Illuminate\Support\Carbon;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
 use App\Models\UserModel;
 use App\Models\FaskesModel;
-use App\Models\PJKonsultasiModel;
+use Illuminate\Http\Request;
+
+use Illuminate\Support\Carbon;
 use App\Models\PJPerkesmasModel;
-use App\Models\TopikEKonsultasiModel;
+use App\Models\PJKonsultasiModel;
+use App\Http\Controllers\Controller;
+use App\Models\WilayahEPerkesmasModel;
+
 
 
 
@@ -45,7 +46,7 @@ class PJPerkesmas extends Controller
         } else {
             $users = null;
         }
-        $topik = TopikEKonsultasiModel::all();
+        $topik = WilayahEPerkesmasModel::all();
 
         $data = [
             'title'             => $this->title,

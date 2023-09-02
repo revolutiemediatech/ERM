@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TopikEPerkesmasModel extends Model
+class WilayahEPerkesmasModel extends Model
 {
     use HasFactory;
 
     // Nama tabel
-    protected $table = 'topik_ePerkesmas';
+    protected $table = 'wilayah_ePerkesmas';
     protected $guarded = ['id'];
 
     public function users()

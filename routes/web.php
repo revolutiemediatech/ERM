@@ -311,6 +311,10 @@ Route::middleware(['login'])->group(function () {
         //E-perkesmas
         Route::resource('admin/penanggungjawab-eperkesmas', ('Admin\EPerkesmas\PJPerkesmas'));
         Route::resource('admin/pj-topik-eperkesmas', ('Admin\EPerkesmas\PJTopik'));
+
+        //Wilayah E-Perkesmas
+        Route::resource('admin/wilayah-ePerkesmas', ('Admin\EPerkesmas\WilayahController'));
+        Route::post('admin/wilayah-ePerkesmas/delete/{id}', ('Admin\EPerkesmas\WilayahController@destroy'))->name('wilayah-ePerkesmas.destroy');
     });
 
     Route::middleware(['adminRs'])->group(function () {

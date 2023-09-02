@@ -549,7 +549,7 @@
         <li class="menu-item">
           <a href="#" class="has-chevron" data-toggle="collapse" data-target="#settingPerkesmas" aria-expanded="false" aria-controls="settingPerkesmas">Setting</a>
           <ul id="settingPerkesmas" class="collapse" aria-labelledby="settingPerkesmas" data-parent="#pages">
-            <li> <a href="{{ url('#')}}">Data Wilayah</a> </li>
+            <li> <a href="{{ url('admin/wilayah-ePerkesmas')}}">Data Wilayah</a> </li>
             <li> <a href="{{ url('admin/penanggungjawab-eperkesmas')}}">Penanggung Jawab</a> </li>
           </ul>
         </li>
