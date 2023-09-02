@@ -21,7 +21,7 @@ class PJPerkesmas extends Controller
     private $views      = 'admin/ePerkesmas/pj';
 
     // Untuk keperluan redirect, hubungannya route / file web
-    private $url        = 'admin/penanggungjawab-eperkesmas';
+    private $url        = 'admin/penanggungjawab-ePerkesmas';
 
     // Title head
     private $title      = 'Halaman Data Penanggung Jawab E-Perkesmas';

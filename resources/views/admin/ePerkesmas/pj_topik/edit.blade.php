@@ -30,17 +30,17 @@
                     <h5 class="card-title">{{ $page }}</h5>
                 </div>
                 <div class="col-lg-6 d-flex justify-content-end">
-                    <a href="{{ url('admin/penanggungjawab-eperkesmas') }}" class="btn btn-sm btn-primary">Kembali</a>
+                    <a href="{{ url('admin/penanggungjawab-ePerkesmas') }}" class="btn btn-sm btn-primary">Kembali</a>
                 </div>
             </div>
         </div>
             {{-- otomatis masuk ke admin/daerah , karena pake resource --}}
-            <form action="{{ url('admin/pj-topik-eperkesmas') }}/{{ $id }}" method="POST">
+            <form action="{{ url('admin/pj-topik-ePerkesmas') }}/{{ $id }}" method="POST" enctype="multipart/form-data">
                 {{-- csrf gunanya buat pastiin kalo data dari form. sejenis security --}}
                 @csrf 
                 {{-- <input type="text" name="e" >
                 <input type="submit" > --}}
-                @foreach ($topik as $topik)
+
                 <div class="card-body">
                     <div class="form-group">
                         <input type="hidden" id="i-nama" class="form-control" name="id" value="{{ $topik->id }}">
@@ -55,9 +55,9 @@
                         <div class="mb-3">
                             <div class="form-group">
                                 <label>Penanggung Jawab</label>
-                                <select class="form-control form-control-lg" id="exampleFormControlSelect1" name="idPenanggungJawab" required>
+                                <select class="form-control form-control-lg" id="exampleFormControlSelect1"  name="idPenanggungJawab" required>
                                     @if ($topik->idPenanggungJawab != null)
-                                        <option value="{{ $topik->idPenanggungJawab }}">{{ $topik->penanggungjawab->nama }}</option>
+                                        <option value="{{ $topik->idPenanggungJawab}}">{{ $topik->penanggungjawab->nama }}</option>
                                     @endif
                                     <option value="">Pilih Karyawan</option>
                                     @foreach ($users as $us)
@@ -68,7 +68,6 @@
                         </div>
                     </div>
                 </div>
-                @endforeach
                 <div class="card-footer">
                     <input type="submit" class="btn btn-primary" value="Simpan">
                     <input type="reset" class="btn btn-secondary" value="Cancel">

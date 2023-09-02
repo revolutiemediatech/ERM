@@ -309,8 +309,9 @@ Route::middleware(['login'])->group(function () {
         Route::post('admin/konsultasi/delete/{id}', ('Admin\EKonsultasi\KonsultasiController@destroy'))->name('konsultasi.destroy');
 
         //E-perkesmas
-        Route::resource('admin/penanggungjawab-eperkesmas', ('Admin\EPerkesmas\PJPerkesmas'));
-        Route::resource('admin/pj-topik-eperkesmas', ('Admin\EPerkesmas\PJTopik'));
+        Route::resource('admin/penanggungjawab-ePerkesmas', ('Admin\EPerkesmas\PJPerkesmas'));
+        Route::resource('admin/pj-topik-ePerkesmas', ('Admin\EPerkesmas\PJTopik'));
+        Route::post('admin/pj-topik-ePerkesmas/{id}', 'Admin\EPerkesmas\PJTopik@update')->name('admin.pj-topik-ePerkesmas.update');
 
         //Wilayah E-Perkesmas
         Route::resource('admin/wilayah-ePerkesmas', ('Admin\EPerkesmas\WilayahController'));

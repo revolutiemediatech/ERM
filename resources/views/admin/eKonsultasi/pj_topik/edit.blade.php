@@ -45,7 +45,7 @@
                     <div class="form-group">
                         <input type="hidden" id="i-nama" class="form-control" name="id" value="{{ $topik->id }}">
                         <div class="mb-3">
-                            <label class="col-form-label pt-0" for="nama">Nama</label>
+                            <label class="col-form-label pt-0" for="nama">Namaku</label>
                             <input name="nama" id="nama" class="form-control" type="text" value="{{ $topik->nama }}" disabled>
                         </div>
                         <div class="mb-3">

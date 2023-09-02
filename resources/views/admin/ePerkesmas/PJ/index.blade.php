@@ -108,7 +108,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href='{{ url("admin/pj-topik-eperkesmas/" . $p->id, []) }}/edit'><i class='fas fa-pencil-alt ms-text-primary'></i></a>
+                                    <a href="{{ url('admin/pj-topik-ePerkesmas/' . $p->id, []) }}/edit"><i class='fas fa-pencil-alt ms-text-primary'></i></a>
                                     {{-- <a href="{{ url("$url/", ['id' => $p->id]) }}" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $p->id }}').submit();"><i class='far fa-trash-alt ms-text-danger'></i></a>
                                     <form id="delete-form-{{ $p->id }}" action="{{ url("$url/", ['id' => $p->id]) }}" method="POST" style="display: none;">@csrf</form> --}}
                                 </td>

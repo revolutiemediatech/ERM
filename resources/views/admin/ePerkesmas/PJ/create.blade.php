@@ -30,12 +30,12 @@
                     <h5 class="card-title">{{ $page }}</h5>
                 </div>
                 <div class="col-lg-6 d-flex justify-content-end">
-                    <a href="{{ url('admin/penanggungjawab-eperkesmas') }}" class="btn btn-sm btn-primary">Kembali</a>
+                    <a href="{{ url('admin/penanggungjawab-ePerkesmas') }}" class="btn btn-sm btn-primary">Kembali</a>
                 </div>
             </div>
         </div>
             {{-- otomatis masuk ke admin/daerah , karena pake resource --}}
-            <form action="{{ url('admin/penanggungjawab-eperkesmas') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ url('admin/penanggungjawab-ePerkesmas') }}" method="POST" enctype="multipart/form-data">
                 {{-- csrf gunanya buat pastiin kalo data dari form. sejenis security --}}
                 @csrf 
                 {{-- <input type="text" name="e" >
