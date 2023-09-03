@@ -439,7 +439,7 @@
         <li class="menu-item">
           <a href="#" class="has-chevron" data-toggle="collapse" data-target="#settingAduan" aria-expanded="false" aria-controls="settingAduan">Setting</a>
           <ul id="settingAduan" class="collapse" aria-labelledby="settingAduan" data-parent="#pages">
-            <li> <a href="{{ url('#')}}">Nama Grup</a> </li>
+            <li> <a href="{{ url('admin/namaGrup-eAduan')}}">Nama Grup</a> </li>
           </ul>
         </li>
       </ul>

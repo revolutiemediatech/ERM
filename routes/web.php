@@ -316,6 +316,10 @@ Route::middleware(['login'])->group(function () {
         //Wilayah E-Perkesmas
         Route::resource('admin/wilayah-ePerkesmas', ('Admin\EPerkesmas\WilayahController'));
         Route::post('admin/wilayah-ePerkesmas/delete/{id}', ('Admin\EPerkesmas\WilayahController@destroy'))->name('wilayah-ePerkesmas.destroy');
+
+        //E-Aduan Nama Grup
+        Route::resource('admin/namaGrup-eAduan', ('Admin\EAduan\AduanGrup'));
+        Route::post('admin/namaGrup-eAduan/delete/{id}', ('Admin\EAduan\AduanGrup@destroy'))->name('namaGrup-eAduan.destroy');
     });
 
     Route::middleware(['adminRs'])->group(function () {
