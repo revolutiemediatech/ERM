@@ -31,51 +31,56 @@
                     <div class="col-lg-6">
                         <h5 class="card-title">{{ $page }}</h5>
                     </div>
-                    <div class="col-lg-6 d-flex justify-content-end">
+                    {{-- <div class="col-lg-6 d-flex justify-content-end">
                         <div class="btn-group">
                             <a href="{{ url("$url/create", []) }}" type="button" class="btn btn-lg btn-primary">
-                                <i class="fas fa-plus-square"></i> <b>Tambah Data Grup</b>
+                                <i class="fas fa-plus-square"></i> <b>Tambah Data Topik</b>
                             </a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive" id="tabel-jquery">
                     <table id="basic-1" class="table table-striped thead-primary w-100">
-                        <thead>
+                    <thead>
+                        <tr>
+                            <th width="50">No.</th>
+                            <th>Nama Mitra</th>
+                            <th>Nama</th>
+                            <th>No HP</th>
+                            <th>Direspon Oleh</th>
+                            <th>Status</th>
+                            <th width="10%"><i class="fas fa-cog"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($aduan as $p)
                             <tr>
-                                <th width="50">No.</th>
-                                <th>Nama Mitra</th>
-                                <th>Diinput Oleh</th>
-                                <th>Nama Grup</th>
-                                <th>Status</th>
-                                <th width="10%"><i class="fas fa-cog"></i></th>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $p->faskes->nama }}</td>
+                                <td>{{ $p->nama }}</td>
+                                <td>{{ $p->no_hp }}</td>
+                                <td>{{ $p->users->nama ?? 'belum ada respon' }}</td>
+                                <td>
+                                    @if ($p->status == 1)
+                                        <span class="badge badge-warning me-auto">Menunggu Respon</span>
+                                    @elseif ($p->status == 2)
+                                        <span class="badge badge-success me-auto">Sudah Direspon</span>  
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href='{{ url("$url/" . $p->id, []) }}'><i class='fas fa-eye ms-text-primary'></i></a>
+                                    @if ($p->status == 1)
+                                    <a href='{{ url("$url/" . $p->id, []) }}/edit'><i class='fas fa-pencil-alt ms-text-primary'></i></a>
+                                    @endif
+                                    {{-- <a href="{{ url("$url/", ['id' => $p->id]) }}" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $p->id }}').submit();"><i class='far fa-trash-alt ms-text-danger'></i></a>
+                                    <form id="delete-form-{{ $p->id }}" action="{{ url("$url/", ['id' => $p->id]) }}" method="POST" style="display: none;">@csrf</form> --}}
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($aduanGrup as $p)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $p->faskes->nama }}</td>
-                                    <td>{{ $p->users->nama }}</td>
-                                    <td>{{ $p->nama }}</td>
-                                    <td>
-                                        @if ($p->status == 1)
-                                            <span class="badge badge-success me-auto">Aktif</span>  
-                                        @elseif ($p->status == 2)
-                                        <span class="badge badge-danger me-auto">Tidak Aktif</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <a href='{{ url("$url/" . $p->id, []) }}/edit'><i class='fas fa-pencil-alt ms-text-primary'></i></a>
-                                        <a href="{{ url("$url/delete/", ['id' => $p->id]) }}" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $p->id }}').submit();"><i class='far fa-trash-alt ms-text-danger'></i></a>
-                                        <form id="delete-form-{{ $p->id }}" action="{{ url("$url/delete", ['id' => $p->id]) }}" method="POST" style="display: none;">@csrf</form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                        @endforeach
+                    </tbody>
+                </table>
                 </div>
             </div>
         </div>

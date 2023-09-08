@@ -444,7 +444,7 @@
         </li>
       </ul>
       <ul id="eAduan" class="collapse" aria-labelledby="eAduan" data-parent="#side-nav-accordion">
-        <li> <a href="{{ url('#') }}">Data Aduan</a></li>
+        <li> <a href="{{ url('admin/aduan') }}">Data Aduan</a></li>
       </ul>
       <ul id="eAduan" class="collapse" aria-labelledby="eAduan" data-parent="#side-nav-accordion">
         <li> <a href="{{ url('#') }}">Respon</a></li>

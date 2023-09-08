@@ -26,6 +26,11 @@ Route::get('/e-konsultasi/konsultasi', 'Landing\KonsultasiController@create');
 Route::post('/e-konsultasi/konsultasi/store/', 'Landing\KonsultasiController@store');
 Route::get('/e-konsultasi/konsultasi/thanks', 'Landing\KonsultasiController@thanks');
 
+// 
+Route::get('/e-aduan/aduan', 'Landing\AduanController@create');
+Route::post('/e-aduan/aduan/store/', 'Landing\AduanController@store');
+Route::get('/e-aduan/aduan/thanks', 'Landing\AduanController@thanks');
+
 // Kuesioner Lainnya
 Route::prefix('/e-skrining')->group(function () {
     Route::get('/list', 'Landing\PemeriksaanController@list')->middleware(['login', 'admin']);
@@ -307,6 +312,10 @@ Route::middleware(['login'])->group(function () {
         //Konsultasi E-Konsultasi
         Route::resource('admin/konsultasi', ('Admin\EKonsultasi\KonsultasiController'));
         Route::post('admin/konsultasi/delete/{id}', ('Admin\EKonsultasi\KonsultasiController@destroy'))->name('konsultasi.destroy');
+
+        //Aduan E-Aduan
+        Route::resource('admin/aduan', ('Admin\EAduan\AduanController'));
+        Route::post('admin/aduan/delete/{id}', ('Admin\EAduan\AduanController@destroy'))->name('aduan.destroy');
 
         //E-perkesmas
         Route::resource('admin/penanggungjawab-ePerkesmas', ('Admin\EPerkesmas\PJPerkesmas'));
