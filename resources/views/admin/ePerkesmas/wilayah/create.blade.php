@@ -53,7 +53,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="col-form-label pt-0" for="nama">Nama</label>
-                        <input name="nama" id="nama" class="form-control" type="text" placeholder="Nama">
+                        <input name="nama" id="nama" class="form-control" type="text" placeholder="Nama Wilayah">
                     </div>
                 </div>
                 <div class="card-footer">

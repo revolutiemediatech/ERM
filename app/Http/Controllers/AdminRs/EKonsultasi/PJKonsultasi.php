@@ -36,7 +36,7 @@ class PJKonsultasi extends Controller
         ]; 
         $penanggung_jawab = PJKonsultasiModel::where($where)->first(); // cari kepsek yg statusnya 1
         if(isset($penanggung_jawab)){
-            $users = UserModel::where('id', $penanggung_jawab['idUsers'])->first(); // tampilkan data guru sebagai kepsek
+            $users = UserModel::where('id', $penanggung_jawab['idUsers'])->get(); // tampilkan data guru sebagai kepsek
         }else{
             $users = null;
         }

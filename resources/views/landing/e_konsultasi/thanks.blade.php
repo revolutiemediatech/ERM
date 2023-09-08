@@ -14,7 +14,7 @@
         <div class="card mb-3">
             <div class="card-body">
                 <h3 class="title">Terima Kasih</h3>
-                <h5>Silahkan menekan tombol kebawah untuk kembali ke halaman lainnya.</h5>
+                <h5>Silahkan menekan tombol dibawah untuk kembali ke halaman sebelumnya.</h5>
             </div>
         </div>
         <div class="btn-box pb-4">

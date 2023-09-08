@@ -15,7 +15,8 @@ use App\Models\FaskesModel;
 use App\Models\TopikEKonsultasiModel;
 
 class KonsultasiController extends Controller
-{    private $views      = 'landing/e_konsultasi';
+{    
+    private $views      = 'landing/e_konsultasi';
     private $url        = '/e-konsultasi/konsultasi';
     private $title      = "O'RBS MEDICA | E-Konsultasi";
 

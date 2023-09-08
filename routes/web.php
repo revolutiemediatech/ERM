@@ -26,17 +26,22 @@ Route::get('/e-konsultasi/konsultasi', 'Landing\KonsultasiController@create');
 Route::post('/e-konsultasi/konsultasi/store/', 'Landing\KonsultasiController@store');
 Route::get('/e-konsultasi/konsultasi/thanks', 'Landing\KonsultasiController@thanks');
 
-// 
+// Request Kunjungan E-Perkesmas
+Route::get('/e-perkesmas/request-kunjungan', 'Landing\ReqKunjunganController@create');
+Route::post('/e-perkesmas/request-kunjungan/store/', 'Landing\ReqKunjunganController@store');
+Route::get('/e-perkesmas/request-kunjungan/thanks', 'Landing\ReqKunjunganController@thanks');
+
+// Input Aduan E-Aduan
 Route::get('/e-aduan/aduan', 'Landing\AduanController@create');
 Route::post('/e-aduan/aduan/store/', 'Landing\AduanController@store');
 Route::get('/e-aduan/aduan/thanks', 'Landing\AduanController@thanks');
 
 // Kuesioner Lainnya
-Route::prefix('/e-skrining')->group(function () {
-    Route::get('/list', 'Landing\PemeriksaanController@list')->middleware(['login', 'admin']);
+Route::prefix('/e-skrining')->group(function(){
+    Route::get('/list', 'Landing\PemeriksaanController@list')->middleware(['login','admin']);
     Route::get('/{id}', 'Landing\PemeriksaanController@form');
     Route::post('/{id}/store', 'Landing\PemeriksaanController@formSubmit');
-    Route::get('/{id}/download', 'Landing\PemeriksaanController@download')->middleware(['login', 'admin']);
+    Route::get('/{id}/download', 'Landing\PemeriksaanController@download')->middleware(['login','admin']);
 });
 
 Route::get('login', ('AuthController@login'));
@@ -54,6 +59,9 @@ Route::middleware(['login'])->group(function () {
 
         //profile
         Route::resource('admin/profile', ('Admin\ProfileController'));
+        
+        //Data Unit atau Ruangan
+        Route::resource('admin/data_ruangan', ('Admin\DataRuanganController'));
 
         //medical record
         Route::resource('admin/medical_record', ('Admin\MedicalRecordController'));
@@ -66,7 +74,7 @@ Route::middleware(['login'])->group(function () {
         //data cabang mitra
         Route::resource('admin/lokasi-pemeriksaan', ('Admin\LokasiController'));
         Route::post('admin/lokPemeriksaan/delete/{id}', ('Admin\LokasiController@destroy'))->name('lokPemeriksaan.destroy');
-
+        
         //Data Sekolah
         Route::resource('admin/sekolah', ('Admin\SekolahController'));
         Route::post('admin/sekolah/delete/{id}', ('Admin\SekolahController@destroy'))->name('sekolah.destroy');
@@ -74,7 +82,7 @@ Route::middleware(['login'])->group(function () {
         //data users
         Route::resource('admin/users', ('Admin\UsersController'));
         Route::post('admin/users/delete/{id}', ('Admin\UsersController@destroy'))->name('karyawan.destroy');
-
+        
         //data role
         Route::resource('admin/role', ('Admin\UserRoleController'));
         Route::post('admin/role/delete/{id}', ('Admin\UserRoleController@destroy'))->name('role.destroy');
@@ -104,7 +112,7 @@ Route::middleware(['login'])->group(function () {
         Route::resource('admin/perawatan', ('Admin\PerawatanController'));
         Route::resource('admin/unit-pelayanan', ('Admin\UnitPelayananController'));
         Route::resource('admin/desa', ('Admin\DesaController'));
-
+        
         //Delete Master Data
         Route::post('admin/provinsi/delete/{id}', ('Admin\ProvinsiController@destroy'))->name('provinsi.destroy');
         Route::post('admin/daerah/delete/{id}', ('Admin\DaerahController@destroy'))->name('daerah.destroy');
@@ -122,7 +130,7 @@ Route::middleware(['login'])->group(function () {
         // Pasien
         Route::resource('admin/pasienn', ('Admin\PasienController'));
         Route::post('admin/pasien/delete/{id}', ('Admin\PasienController@destroy'))->name('pasien.destroy');
-
+        
         //Rujukan
         Route::resource('admin/rujukan', ('Admin\PasienRujukanController'));
 
@@ -172,7 +180,7 @@ Route::middleware(['login'])->group(function () {
         Route::resource('admin/rawat-jalan/laborat', ('Admin\RawatJalan\LaboratController'));
         Route::resource('admin/rawat-jalan/ugd', ('Admin\RawatJalan\UGDController'));
         Route::resource('admin/rawat-jalan/kia', ('Admin\RawatJalan\KIAController'));
-
+        
         //delete rawat jalan
         Route::post('admin/rawat-jalan/bp-umum/delete/{id}', ('Admin\RawatJalan\BpUmumController@destroy'))->name('bp-umum.destroy');
         Route::post('admin/rawat-jalan/bp-gigi/delete/{id}', ('Admin\RawatJalan\BpGigiController@destroy'))->name('bp-gigi.destroy');
@@ -190,7 +198,7 @@ Route::middleware(['login'])->group(function () {
         Route::resource('admin/rawat-inap/pasien', ('Admin\RawatInap\PasienInapController'));
         Route::get('admin/rawat-inap/pasien/{id}/tambah_cppt', ('Admin\RawatInap\PasienInapController@tambah_cppt'));
         Route::post('admin/rawat-inap/pasien/{id}/proses_tambah', ('Admin\RawatInap\PasienInapController@proses_tambah'));
-
+        
         //autofill
         Route::resource('admin/autofill-custom', ('Admin\AutofillController'));
 
@@ -225,10 +233,10 @@ Route::middleware(['login'])->group(function () {
 
         //billing
         Route::resource('admin/billing', ('Admin\BillingController'));
-
+        
         //checkout
         Route::resource('admin/checkout', ('Admin\CheckoutController'));
-
+        
         //gallery pasien
         Route::resource('admin/gallery', ('Admin\GalleryPasien'));
         Route::post('admin/gallery/delete/{id}', ('Admin\GalleryPasien@destroy'))->name('gallery.destroy');
@@ -239,7 +247,7 @@ Route::middleware(['login'])->group(function () {
 
         //Penanggung Jawab E-Uks
         Route::resource('admin/penanggungjawab-eUks', ('Admin\EUks\PJUksController'));
-
+        
         // Responden
         Route::get('/admin/responden', 'Admin\EUks\Responden@index');
         Route::get('/admin/responden/create', 'Admin\EUks\Responden@create');
@@ -277,13 +285,13 @@ Route::middleware(['login'])->group(function () {
 
         // skrining gigi
         Route::resource('admin/pemeriksaan-gigi', ('Admin\EUks\PemeriksaanGigiController'));
-
+        
         // skrining SD - SMA
         Route::resource('admin/pemeriksaan-sd-sma', ('Admin\EUks\PemeriksaanSdSmaController'));
-
+        
         // skrining DDTK
         Route::resource('admin/pemeriksaan-ddtk', ('Admin\EUks\PemeriksaanDdtkController'));
-
+        
         // Kuesioner Skrining DDTK
         Route::get('admin/e-uks/pemeriksaan-ddtk', 'Admin\EUks\kuesioner\SkriningDdtkController@create');
         Route::post('admin/e-uks/pemeriksaan-ddtk/store/', 'Admin\EUks\kuesioner\SkriningDdtkController@store');
@@ -301,34 +309,45 @@ Route::middleware(['login'])->group(function () {
 
         //Penanggung Jawab E-Konsultasi
         Route::resource('admin/penanggungjawab-eKonsultasi', ('Admin\EKonsultasi\PJKonsultasi'));
-
+        
         //Topik E-Konsultasi
         Route::resource('admin/topik-eKonsultasi', ('Admin\EKonsultasi\TopikEKonsultasiController'));
         Route::post('admin/topik-eKonsultasi/delete/{id}', ('Admin\EKonsultasi\TopikEKonsultasiController@destroy'))->name('topik-eKonsultasi.destroy');
-
+        
         //PJ TOpik E-Konsultasi
         Route::resource('admin/pj-topik-eKonsultasi', ('Admin\EKonsultasi\PJTopik'));
 
         //Konsultasi E-Konsultasi
         Route::resource('admin/konsultasi', ('Admin\EKonsultasi\KonsultasiController'));
         Route::post('admin/konsultasi/delete/{id}', ('Admin\EKonsultasi\KonsultasiController@destroy'))->name('konsultasi.destroy');
-
-        //Aduan E-Aduan
-        Route::resource('admin/aduan', ('Admin\EAduan\AduanController'));
-        Route::post('admin/aduan/delete/{id}', ('Admin\EAduan\AduanController@destroy'))->name('aduan.destroy');
-
+        
         //E-perkesmas
-        Route::resource('admin/penanggungjawab-ePerkesmas', ('Admin\EPerkesmas\PJPerkesmas'));
-        Route::resource('admin/pj-topik-ePerkesmas', ('Admin\EPerkesmas\PJTopik'));
-        Route::post('admin/pj-topik-ePerkesmas/{id}', 'Admin\EPerkesmas\PJTopik@update')->name('admin.pj-topik-ePerkesmas.update');
+        Route::resource('admin/penanggungjawab-eperkesmas', ('Admin\EPerkesmas\PJPerkesmas'));
 
-        //Wilayah E-Perkesmas
-        Route::resource('admin/wilayah-ePerkesmas', ('Admin\EPerkesmas\WilayahController'));
-        Route::post('admin/wilayah-ePerkesmas/delete/{id}', ('Admin\EPerkesmas\WilayahController@destroy'))->name('wilayah-ePerkesmas.destroy');
+        //PJ Wilayah E-Perkesmas
+        Route::resource('admin/pj-wilayah-eperkesmas', ('Admin\EPerkesmas\PJWilayah'));
 
-        //E-Aduan Nama Grup
-        Route::resource('admin/namaGrup-eAduan', ('Admin\EAduan\AduanGrup'));
-        Route::post('admin/namaGrup-eAduan/delete/{id}', ('Admin\EAduan\AduanGrup@destroy'))->name('namaGrup-eAduan.destroy');
+        //wilayah E-Perkesmas
+        Route::resource('admin/wilayah-eperkesmas', ('Admin\EPerkesmas\WilayahController'));
+        Route::post('admin/wilayah-eperkesmas/delete/{id}', ('Admin\EPerkesmas\WilayahController@destroy'));
+        
+        //Validasi Kunjungan E-Perkesmas
+        Route::resource('admin/validasi-kunjungan-eperkesmas', ('Admin\EPerkesmas\KunjunganController'));
+
+        //Data Pasien Valid E-Homecare
+        Route::resource('admin/pasien-valid-eperkesmas', ('Admin\EPerkesmas\ValidController'));
+        
+        //Data Pasien Inalid E-Homecare
+        Route::resource('admin/pasien-invalid-eperkesmas', ('Admin\EPerkesmas\InvalidController'));
+
+        //Data Rekapitulasi Pasien E-Homecare
+        Route::resource('admin/rekapitulasi_E-Home-Care', ('Admin\EPerkesmas\RekapitulasiController'));
+
+        //Data Grup E-Aduan
+        Route::resource('admin/grup-EAduan', ('Admin\EAduan\GrupController'));
+        
+        //Data Aduan E-Aduan
+        Route::resource('admin/data-aduan', ('Admin\EAduan\AduanController'));
     });
 
     Route::middleware(['adminRs'])->group(function () {
@@ -340,7 +359,7 @@ Route::middleware(['login'])->group(function () {
 
         //profile
         Route::resource('adminRs/profile', ('AdminRs\ProfileController'));
-
+        
         //medical record
         Route::resource('adminRs/medical_record', ('AdminRs\MedicalRecordController'));
         Route::post('adminRs/medical_record/delete/{id}', ('AdminRs\MedicalRecordController@destroy'))->name('medical_record.destroy');
@@ -355,9 +374,12 @@ Route::middleware(['login'])->group(function () {
         // farmasi
         Route::resource('adminRs/obat', ('AdminRs\ObatController'));
         Route::resource('adminRs/pengajuan-obat', ('AdminRs\PengajuanObatController'));
-
+        
         //history kunjungan
         Route::resource('adminRs/rawat-jalan/history', ('AdminRs\HistoryKunjunganController'));
+        
+        //Data Unit atau Ruangan
+        Route::resource('adminRs/data_ruangan', ('AdminRs\DataRuanganController'));
 
         //mitra
         Route::resource('adminRs/users', ('AdminRs\UsersController'));
@@ -369,7 +391,7 @@ Route::middleware(['login'])->group(function () {
         //data role
         Route::resource('adminRs/role', ('AdminRs\UserRoleController'));
         Route::post('adminRs/role/delete/{id}', ('AdminRs\UserRoleController@destroy'))->name('role.destroy');
-
+ 
         //delete data mitra
         Route::post('adminRs/kamar/delete/{id}', ('AdminRs\KamarController@destroy'))->name('kamar.destroy');
         Route::post('adminRs/bed/delete/{id}', ('AdminRs\BedController@destroy'))->name('bed.destroy');
@@ -386,12 +408,12 @@ Route::middleware(['login'])->group(function () {
         Route::resource('adminRs/rawat-jalan/laborat', ('AdminRs\RawatJalan\LaboratController'));
         Route::resource('adminRs/rawat-jalan/ugd', ('AdminRs\RawatJalan\UGDController'));
         Route::resource('adminRs/rawat-jalan/kia', ('AdminRs\RawatJalan\KIAController'));
-
+        
         // rawat inap
         Route::resource('adminRs/rawat-inap/pasien', ('AdminRs\RawatInap\PasienInapController'));
         Route::get('adminRs/rawat-inap/pasien/{id}/tambah_cppt', ('AdminRs\RawatInap\PasienInapController@tambah_cppt'));
         Route::post('adminRs/rawat-inap/pasien/{id}/proses_tambah', ('AdminRs\RawatInap\PasienInapController@proses_tambah'));
-
+        
         //Rujukan
         Route::resource('adminRs/rujukan', ('adminRs\PasienRujukanController'));
 
@@ -433,7 +455,7 @@ Route::middleware(['login'])->group(function () {
 
         // rawat inap
         Route::resource('adminRs/rawat-inap/pasien', ('AdminRs\RawatInap\PasienInapController'));
-
+        
         //autofill
         Route::resource('adminRs/autofill-custom', ('AdminRs\AutofillController'));
 
@@ -455,7 +477,7 @@ Route::middleware(['login'])->group(function () {
         //api satu sehat
         Route::resource('adminRs/api-satu-sehat', ('AdminRs\Resume\ApiSatuSehatController'));
         Route::post('adminRs/api-satu-sehat/delete/{id}', ('AdminRs\Resume\ApiSatuSehatController@destroy'))->name('api-satu-sehat.destroy');
-
+        
         //tindakan medis
         Route::resource('adminRs/tindakan-medis', ('AdminRs\TindakanMedisController'));
 
@@ -476,10 +498,10 @@ Route::middleware(['login'])->group(function () {
         //gallery pasien
         Route::resource('adminRs/gallery', ('AdminRs\GalleryPasien'));
         Route::post('adminRs/gallery/delete/{id}', ('AdminRs\GalleryPasien@destroy'));
-
+        
         //Penanggung Jawab E-Uks
         Route::resource('adminRs/penanggungjawab-eUks', ('AdminRs\EUks\PJUksController'));
-
+        
         // Responden
         Route::get('/adminRs/responden', 'AdminRs\EUks\Responden@index');
         Route::get('/adminRs/responden/create', 'AdminRs\EUks\Responden@create');
@@ -517,13 +539,13 @@ Route::middleware(['login'])->group(function () {
 
         // skrining gigi
         Route::resource('adminRs/pemeriksaan-gigi', ('AdminRs\EUks\PemeriksaanGigiController'));
-
+        
         // skrining SD - SMA
         Route::resource('adminRs/pemeriksaan-sd-sma', ('AdminRs\EUks\PemeriksaanSdSmaController'));
-
+        
         // skrining DDTK
         Route::resource('adminRs/pemeriksaan-ddtk', ('AdminRs\EUks\PemeriksaanDdtkController'));
-
+        
         // Kuesioner Skrining DDTK
         Route::get('adminRs/e-uks/pemeriksaan-ddtk', 'AdminRs\EUks\kuesioner\SkriningDdtkController@create');
         Route::post('adminRs/e-uks/pemeriksaan-ddtk/store/', 'AdminRs\EUks\kuesioner\SkriningDdtkController@store');
@@ -541,14 +563,14 @@ Route::middleware(['login'])->group(function () {
 
         //Penanggung Jawab E-Konsultasi
         Route::resource('adminRs/penanggungjawab-eKonsultasi', ('AdminRs\EKonsultasi\PJKonsultasi'));
-
+        
         //Topik E-Konsultasi
         Route::resource('adminRs/topik-eKonsultasi', ('AdminRs\EKonsultasi\TopikEKonsultasiController'));
         Route::post('adminRs/topik-eKonsultasi/delete/{id}', ('AdminRs\EKonsultasi\TopikEKonsultasiController@destroy'))->name('topik-eKonsultasi.destroy');
-
+        
         //PJ TOpik E-Konsultasi
         Route::resource('adminRs/pj-topik-eKonsultasi', ('AdminRs\EKonsultasi\PJTopik'));
-
+        
         //Konsultasi E-Konsultasi
         Route::resource('adminRs/konsultasi', ('AdminRs\EKonsultasi\KonsultasiController'));
         Route::post('adminRs/konsultasi/delete/{id}', ('AdminRs\EKonsultasi\KonsultasiController@destroy'))->name('konsultasi.destroy');
@@ -557,14 +579,14 @@ Route::middleware(['login'])->group(function () {
     Route::middleware(['dokter'])->group(function () {
         // Profile
         Route::resource('dokter/profile', ('Dokter\ProfileController'));
-
+        
         //history kunjungan
         Route::resource('dokter/rawat-jalan/history', ('Dokter\HistoryKunjunganController'));
 
         //persetujuan dan penolakan
         Route::resource('dokter/rawat-jalan/perpen', ('Dokter\PerPenController'));
         Route::post('dokter/rawat-jalan/perpen/delete/{id}', ('Dokter\PerPenController@destroy'))->name('perpen.destroy');
-
+        
         //gallery pasien
         Route::resource('dokter/gallery', ('Dokter\GalleryPasien'));
         Route::post('dokter/gallery/delete/{id}', ('Dokter\GalleryPasien@destroy'))->name('gallery.destroy');
@@ -609,10 +631,10 @@ Route::middleware(['login'])->group(function () {
         // Pasien
         Route::resource('dokter/pasienn', ('Dokter\PasienController'));
         Route::resource('dokter/rawat-inap/pasien', ('Dokter\RawatInap\PasienInapController'));
-
+        
         // Diagnosa
         Route::resource('dokter/diagnosa', ('Dokter\DiagnosaController'));
-
+        
         // Diagnosa
         Route::resource('dokter/diagnosa', ('Dokter\RawatJalan\DiagnosaController'));
         Route::resource('dokter/bp-umum', ('Dokter\RawatJalan\BpUmumController'));
@@ -622,7 +644,7 @@ Route::middleware(['login'])->group(function () {
         Route::resource('dokter/laborat', ('Dokter\RawatJalan\LaboratController'));
         Route::resource('dokter/ugd', ('Dokter\RawatJalan\UGDController'));
         Route::resource('dokter/kia', ('Dokter\RawatJalan\KIAController'));
-
+        
         //Penanggung Jawab E-Uks
         Route::resource('dokter/penanggungjawab-eUks', ('Dokter\EUks\PJUksController'));
 
@@ -646,7 +668,7 @@ Route::middleware(['login'])->group(function () {
 
         // Delete Obat
         Route::post('apoteker/obat/delete/{id}', ('Apoteker\ObatController@destroy'))->name('apoteker.destroy');
-
+        
         //farmasi pengajuan obat rajal
         Route::resource('apoteker/pengajuan-obat-rajal', ('Apoteker\PengajuanObat\RawatJalanController'));
         Route::post('apoteker/pengajuan-obat-rajal/delete/{id}', ('Apoteker\PengajuanObat\RawatJalanController@destroy'))->name('apoteker/pengajuan-obat-rajal.destroy');
@@ -654,8 +676,9 @@ Route::middleware(['login'])->group(function () {
         //farmasi pengajuan obat ranap
         Route::resource('apoteker/pengajuan-obat-ranap', ('Apoteker\PengajuanObat\RawatInapController'));
         Route::resource('apoteker/pengajuan-obat-ranap', ('Apoteker\PengajuanObat\RawatInapController'));
-    });
 
+    });
+    
     Route::middleware(['perawat'])->group(function () {
         // Profile
         Route::resource('perawat/profile', ('Perawat\ProfileController'));
@@ -673,7 +696,7 @@ Route::middleware(['login'])->group(function () {
 
         // Diagnosa
         Route::resource('perawat/diagnosa', ('Perawat\DiagnosaController'));
-
+        
         // Diagnosa
         Route::resource('perawat/bp-umum', ('Perawat\RawatJalan\BpUmumController'));
         Route::resource('perawat/bp-gigi', ('Perawat\RawatJalan\BpGigiController'));
@@ -684,7 +707,7 @@ Route::middleware(['login'])->group(function () {
         Route::resource('perawat/ugd', ('Perawat\RawatJalan\UGDController'));
         Route::resource('perawat/kia', ('Perawat\RawatJalan\KIAController'));
     });
-
+    
     Route::middleware(['bidan'])->group(function () {
         // Profile
         Route::resource('bidan/profile', ('Bidan\ProfileController'));
@@ -719,7 +742,7 @@ Route::middleware(['login'])->group(function () {
         //pengajuan labor rawat inap
         Route::resource('bidan/pengajuan-labor-inap', ('Bidan\PengajuanLabor\PengajuanLaborInapController'));
         Route::post('bidan/pengajuan-labor-inap/delete/{id}', ('Bidan\PengajuanLabor\PengajuanLaborInapController@destroy'))->name('pengajuan-labor-inap.destroy');
-
+ 
         // Data Penunjang
         Route::resource('bidan/penunjang', ('Bidan\PenunjangController'));
         Route::post('bidan/penunjang/delete/{id}', ('Bidan\PenunjangController@destroy'))->name('penunjang.destroy');
@@ -728,10 +751,10 @@ Route::middleware(['login'])->group(function () {
         Route::resource('bidan/pengajuan-penunjang', ('Bidan\pengajuanPenunjang\PengajuanPenunjangController'));
         Route::post('bidan/pengajuan-penunjang/delete/{id}', ('Bidan\pengajuanPenunjang\PengajuanPenunjangController@destroy'))->name('bidan/pengajuan-penunjang.destroy');
 
-        // Data Pengajuan Penunjang Rawat Inap
+         // Data Pengajuan Penunjang Rawat Inap
         Route::resource('bidan/pengajuan-penunjang-inap', ('Bidan\pengajuanPenunjang\PengajuanPenunjangInapController'));
         Route::post('bidan/pengajuan-penunjang-inap/delete/{id}', ('Bidan\pengajuanPenunjang\PengajuanPenunjangInapController@destroy'))->name('bidan/pengajuan-penunjang-inap.destroy');
-
+ 
         // Route::resource('bidan/bp-umum', ('Bidan\RawatJalan\BpUmumController'));
         // Route::resource('bidan/bp-gigi', ('Bidan\RawatJalan\BpGigiController'));
         // Route::resource('bidan/gizi', ('Bidan\RawatJalan\GiziController'));
@@ -753,35 +776,37 @@ Route::middleware(['login'])->group(function () {
         //labor
         Route::resource('analisLabor/labor', ('AnalisLabor\DataLaborController'));
         Route::post('analisLabor/labor/delete/{id}', ('AnalisLabor\DataLaborController@destroy'))->name('AnalisLabor.destroy');
-
-        //pengajuan labor rawat jalan
-        Route::resource('analisLabor/pengajuan-labor', ('AnalisLabor\PengajuanLabor\PengajuanLaborController'));
-        Route::post('analisLabor/pengajuan-labor/delete/{id}', ('AnalisLabor\PengajuanLabor\PengajuanLaborController@destroy'))->name('pengajuan-labor.destroy');
-
-        //pengajuan labor rawat inap
+        
+         //pengajuan labor rawat jalan
+         Route::resource('analisLabor/pengajuan-labor', ('AnalisLabor\PengajuanLabor\PengajuanLaborController'));
+         Route::post('analisLabor/pengajuan-labor/delete/{id}', ('AnalisLabor\PengajuanLabor\PengajuanLaborController@destroy'))->name('pengajuan-labor.destroy');
+ 
+          //pengajuan labor rawat inap
         Route::resource('analisLabor/pengajuan-labor-inap', ('AnalisLabor\PengajuanLabor\PengajuanLaborInapController'));
         Route::post('analisLabor/pengajuan-labor-inap/delete/{id}', ('AnalisLabor\PengajuanLabor\PengajuanLaborInapController@destroy'))->name('pengajuan-labor-inap.destroy');
+ 
     });
-
+    
     Route::middleware(['paramedis'])->group(function () {
         // Profile
         Route::resource('paramedis/profile', ('Paramedis\ProfileController'));
-
+        
         // Pasien
         Route::resource('paramedis/pasienn', ('Paramedis\PasienController'));
-
+        
         // Farmasi
         Route::resource('paramedis/obat', ('Paramedis\ObatController'));
         Route::resource('paramedis/pengajuan-obat', ('Paramedis\PengajuanObatController'));
-
+        
         // Farmasi
         Route::resource('paramedis/pengajuan-labor', ('Paramedis\PengajuanLaborController'));
 
         //billing
         Route::resource('paramedis/billing', ('Paramedis\BillingController'));
-
+        
         //data administrasi
         Route::resource('paramedis/administrasi', ('Paramedis\AdministrasiController'));
         Route::post('paramedis/administrasi/delete/{id}', ('Paramedis\AdministrasiController@destroy'))->name('administrasi.destroy');
     });
+
 });

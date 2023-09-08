@@ -46,6 +46,7 @@
         <li> <a href="{{ url('adminRs/autofill-custom') }}">Auto Fill Custom</a></li>
         <li> <a href="{{ url('adminRs/kop') }}">Data Kop</a></li>
         <li> <a href="{{ url('adminRs/medical_record') }}">Medical Record</a></li>
+        <li> <a href="{{ url('adminRs/data_ruangan') }}">Data Unit/Ruangan</a></li>
         <li class="menu-item">
           <a href="#" class="has-chevron" data-toggle="collapse" data-target="#resume" aria-expanded="false" aria-controls="resume">Data Resume</a>
           <ul id="resume" class="collapse" aria-labelledby="resume" data-parent="#pages">
@@ -202,7 +203,7 @@
         <li class="menu-item">
           <a href="#" class="has-chevron" data-toggle="collapse" data-target="#screeningKes" aria-expanded="false" aria-controls="screeningKes">Screening Kesehatan Siswa Mandiri</a>
           <ul id="screeningKes" class="collapse" aria-labelledby="screeningKes" data-parent="#pages">
-            {{-- <li> <a href="{{ url('#')}}">Data Screening</a> </li> --}}
+            <li> <a href="{{ url('/e-uks/skrining-kesehatan-siswa')}}" target="_blank">Kuesioner</a> </li>
             <li> <a href="{{ url('/adminRs/question')}}">Pertanyaan</a> </li>
             <li> <a href="{{ url('/adminRs/answer')}}">Jawaban</a> </li>
           </ul>

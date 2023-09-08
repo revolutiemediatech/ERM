@@ -64,13 +64,13 @@
         </div>
     </div>
 
-    {{-- pj per topik --}}
+    {{-- pj per wilayah --}}
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="ms-panel">
             <div class="ms-panel-header">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h5 class="card-title">Penanggung Jawab Topik</h5>
+                        <h5 class="card-title">Penanggung Jawab Wilayah</h5>
                     </div>
                     {{-- <div class="col-lg-6 d-flex justify-content-end">
                         <div class="btn-group">
@@ -87,14 +87,14 @@
                         <tr>
                             <th width="50">No.</th>
                             <th>Nama Mitra</th>
-                            <th>Nama Topik</th>
+                            <th>Nama Wilayah</th>
                             <th>Penanggung Jawab</th>
                             <th>Status</th>
                             <th width="10%"><i class="fas fa-cog"></i></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($topik as $p)
+                        @foreach ($wilayah as $p)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $p->faskes->nama }}</td>
@@ -108,7 +108,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ url('admin/pj-topik-ePerkesmas/' . $p->id, []) }}/edit"><i class='fas fa-pencil-alt ms-text-primary'></i></a>
+                                    <a href='{{ url("admin/pj-wilayah-eperkesmas/" . $p->id, []) }}/edit'><i class='fas fa-pencil-alt ms-text-primary'></i></a>
                                     {{-- <a href="{{ url("$url/", ['id' => $p->id]) }}" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $p->id }}').submit();"><i class='far fa-trash-alt ms-text-danger'></i></a>
                                     <form id="delete-form-{{ $p->id }}" action="{{ url("$url/", ['id' => $p->id]) }}" method="POST" style="display: none;">@csrf</form> --}}
                                 </td>

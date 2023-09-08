@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\Admin\EPerkesmas;
 
-use App\Models\UserModel;
-use App\Models\FaskesModel;
+use Illuminate\Support\Carbon;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Carbon;
+use App\Models\UserModel;
+use App\Models\FaskesModel;
 use App\Models\PJPerkesmasModel;
-use App\Models\PJKonsultasiModel;
-use App\Http\Controllers\Controller;
-use App\Models\WilayahEPerkesmasModel;
-
+use App\Models\WilayahPerkesmasModel;
 
 
 
@@ -21,7 +19,7 @@ class PJPerkesmas extends Controller
     private $views      = 'admin/ePerkesmas/pj';
 
     // Untuk keperluan redirect, hubungannya route / file web
-    private $url        = 'admin/penanggungjawab-ePerkesmas';
+    private $url        = 'admin/penanggungjawab-eperkesmas';
 
     // Title head
     private $title      = 'Halaman Data Penanggung Jawab E-Perkesmas';
@@ -46,14 +44,14 @@ class PJPerkesmas extends Controller
         } else {
             $users = null;
         }
-        $topik = WilayahEPerkesmasModel::all();
+        $wilayah = WilayahPerkesmasModel::all();
 
         $data = [
             'title'             => $this->title,
             'url'               => $this->url,
             'page'              => 'Data Penanggung Jawab E-Perkesmas',
             'users'             => $users,
-            'topik'             => $topik,
+            'wilayah'           => $wilayah,
         ];
 
         // View, menuju file index di dalam folder = admin/mPerpusJurusan

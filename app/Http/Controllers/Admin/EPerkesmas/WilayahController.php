@@ -1,17 +1,16 @@
 <?php
 
 namespace App\Http\Controllers\Admin\EPerkesmas;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\FaskesModel;
-use App\Models\WilayahEPerkesmasModel;
 
+use App\Models\WilayahPerkesmasModel;
+use App\Models\FaskesModel;
 
 class WilayahController extends Controller
 {
-    private $views      = 'admin/ePerkesmas/wilayah';
-    private $url        = 'admin/wilayah-ePerkesmas';
+    private $views      = 'admin/eperkesmas/wilayah';
+    private $url        = 'admin/wilayah-eperkesmas';
     private $title      = 'Halaman Data Wilayah E-Perkesmas';
 
 
@@ -22,7 +21,7 @@ class WilayahController extends Controller
 
     public function index()
     {
-        $wilayah = WilayahEPerkesmasModel::all();
+        $wilayah = WilayahPerkesmasModel::all();
 
         $data = [
             'title'         => $this->title,
@@ -30,13 +29,14 @@ class WilayahController extends Controller
             'page'          => 'Halaman Data Wilayah',
             'wilayah'         => $wilayah
         ];
-
+        
         return view($this->views . "/index", $data);
     }
 
     public function create()
     {
         $faskes = FaskesModel::all();
+
         $data = [
             'title'         => $this->title,
             'url'           => $this->url,
@@ -56,7 +56,7 @@ class WilayahController extends Controller
             'status'        => 1,
         ];
         // echo json_encode($dataWilayah); die();
-        WilayahEPerkesmasModel::create($dataWilayah);
+        WilayahPerkesmasModel::create($dataWilayah);
 
         return redirect("$this->url")->with('sukses', 'Data Wilayah E-Perkesmas berhasil di tambahkan');
     }
@@ -68,32 +68,33 @@ class WilayahController extends Controller
 
     public function edit($id)
     {
-        $wilayah   = WilayahEPerkesmasModel::where('id', $id)->first();
+        $wilayah   = WilayahPerkesmasModel::where('id', $id)->first();
+
         $data = [
             'title'     => $this->title,
             'url'       => $this->url,
             'page'      => 'Edit Data Wilayah',
             'id'        => $id,
-            'wilayah'     => $wilayah
+            'wilayah'   => $wilayah,
         ];
         return view($this->views . "/edit", $data);
     }
 
     public function update(Request $request, $id)
-    {
+    {   
         $dataWilayah = [
             'nama'          => $request->nama,
             'status'        => $request->status,
         ];
-        WilayahEPerkesmasModel::where('id', $id)->update($dataWilayah);
+        WilayahPerkesmasModel::where('id', $id)->update($dataWilayah);
 
         return redirect("$this->url")->with('sukses', 'Data Wilayah E-Perkesmas berhasil di edit');
     }
 
     public function destroy($id)
     {
-        $wilayah      = WilayahEPerkesmasModel::where('id', $id)->first();
-        WilayahEPerkesmasModel::destroy($id);
+        $wilayah      = WilayahPerkesmasModel::where('id', $id)->first();
+        WilayahPerkesmasModel::destroy($id);
 
         return redirect("$this->url")->with('sukses', 'Data Wilayah E-Perkesmas ' . $wilayah->nama . ' berhasil di hapus');
     }

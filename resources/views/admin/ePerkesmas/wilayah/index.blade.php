@@ -34,7 +34,7 @@
                     <div class="col-lg-6 d-flex justify-content-end">
                         <div class="btn-group">
                             <a href="{{ url("$url/create", []) }}" type="button" class="btn btn-lg btn-primary">
-                                <i class="fas fa-plus-square"></i> <b>Tambah Data Wilayahj</b>
+                                <i class="fas fa-plus-square"></i> <b>Tambah Data Wilayah</b>
                             </a>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                                     </td>
                                     <td>
                                         <a href='{{ url("$url/" . $p->id, []) }}/edit'><i class='fas fa-pencil-alt ms-text-primary'></i></a>
-                                        <a href="{{ url("$url/delete/", ['id' => $p->id]) }}" onclick="if (confirm('Are you sure you want to delete this item?')) { event.preventDefault(); document.getElementById('delete-form-{{ $p->id }}').submit(); }"><i class='far fa-trash-alt ms-text-danger'></i></a>
+                                        <a href="{{ url("$url/delete", ['id' => $p->id]) }}" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $p->id }}').submit();"><i class='far fa-trash-alt ms-text-danger'></i></a>
                                         <form id="delete-form-{{ $p->id }}" action="{{ url("$url/delete", ['id' => $p->id]) }}" method="POST" style="display: none;">@csrf</form>
                                     </td>
                                 </tr>

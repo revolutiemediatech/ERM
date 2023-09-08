@@ -174,6 +174,7 @@ class QuestionController extends Controller
 
         // kirim wa dulu gag sih
         waThanksSD($request->no_hp, $request->nama);
+        analisisSD($dataUserData, $dataQuestion);
 
         // Response
         return redirect("$this->url/thanks")->with('sukses', 'Terima Kasih telah Memberikan Jawaban');

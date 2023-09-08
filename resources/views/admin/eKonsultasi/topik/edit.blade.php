@@ -38,12 +38,17 @@
             <form action="{{ url('admin/topik-eKonsultasi') }}/{{ $id }}" method="POST">
                 {{-- csrf gunanya buat pastiin kalo data dari form. sejenis security --}}
                 @csrf 
+                @method('PUT')
                 {{-- <input type="text" name="e" >
                 <input type="submit" > --}}
 
                 <div class="card-body">
                     <div class="form-group">
                         <input type="hidden" id="i-nama" class="form-control" name="id" value="{{ $topik->id }}">
+                        <div class="mb-3">
+                            <label class="col-form-label pt-0" for="nama">Mitra</label>
+                            <input name="idFaskes" id="idFaskes" class="form-control" type="text" value="{{ $topik->faskes->nama }}" disabled>
+                        </div>
                         <div class="mb-3">
                             <label class="col-form-label pt-0" for="nama">Nama</label>
                             <input name="nama" id="nama" class="form-control" type="text" value="{{ $topik->nama }}">

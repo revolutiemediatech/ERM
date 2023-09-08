@@ -22,7 +22,7 @@ class PJTopik extends Controller
     public function edit($id)
     {
         $topik   = TopikEKonsultasiModel::where('id', $id)->first();
-        $users   = UserModel::where('idFaskes', session()->get('idFaskes'),); 
+        $users   = UserModel::where('idFaskes', session()->get('idFaskes'))->get(); 
 
         $data = [
             'title'     => $this->title,

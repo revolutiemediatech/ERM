@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 // Library
-use DB;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 // Model
 use App\Models\AduanModel;
@@ -32,12 +31,12 @@ class AduanController extends Controller
     public function create()
     {
         // Get Data
-        $faskes = FaskesModel::all();
+        $faskes     = FaskesModel::all();
 
         $data = [
             'title'         => $this->title,
             'url'           => $this->url,
-            // 'page'          => 'Tambah Data Aduan',
+            // 'page'          => 'Tambah Data Konsultasi',
             'faskes'        => $faskes
         ];
 
@@ -45,20 +44,20 @@ class AduanController extends Controller
     }
     public function store(Request $request)
     {
-        // Validation
-        $dataAduan = [
-            'idFaskes'       => $request->idFaskes,
-            'nama'           => $request->nama,
-            'no_hp'          => $request->no_hp,
-            'keluhan'        => $request->keluhan,
-            'status'         => 1,
+        $dataKunjungan = [
+            'idFaskes'          => $request->idFaskes,
+            'no_hp'             => $request->no_hp,
+            'nama'              => $request->nama,
+            'bagian_pelayanan'  => $request->bagian_pelayanan,
+            'keluhan'           => $request->keluhan,
+            'kode_unik'         => rand(000000, 999999),
+            'status'            => 0, 
         ];
-        // echo json_encode($dataAduan); die();
-        AduanModel::insert($dataAduan);
-
+        // echo json_encode($dataKunjungan);
+        AduanModel::insert($dataKunjungan);
         return redirect("$this->url/thanks")->with('sukses', 'Terima Kasih telah Memberikan Jawaban');
     }
-
+    
     public function thanks()
     {
         // Get Data

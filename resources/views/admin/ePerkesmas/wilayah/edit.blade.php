@@ -47,7 +47,7 @@
                         <input type="hidden" id="i-nama" class="form-control" name="id" value="{{ $wilayah->id }}">
                         <div class="mb-3">
                             <label class="col-form-label pt-0" for="nama">Mitra</label>
-                            <input name="nama" id="nama" class="form-control" type="text" value="{{ $wilayah->faskes->nama }}" disabled>
+                            <input name="idFaskes" id="idFaskes" class="form-control" type="text" value="{{ $wilayah->faskes->nama }}" disabled>
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label pt-0" for="nama">Nama</label>

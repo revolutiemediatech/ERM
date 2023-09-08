@@ -19,7 +19,7 @@
     <hr class="sidebar-divider">
     <!-- Heading -->
     <div class="sidebar-heading">
-      <span style="color: #ffff">General</span>
+      <span style="color: #ffff">Generalnyaaa</span>
     </div>
     <!-- Dashboard -->
     <li class="menu-item">
@@ -46,6 +46,7 @@
         <li> <a href="{{ url('admin/autofill-custom') }}">Auto Fill Custom</a></li>
         <li> <a href="{{ url('admin/kop') }}">Data Kop</a></li>
         <li> <a href="{{ url('admin/medical_record') }}">Medical Record</a></li>
+        <li> <a href="{{ url('admin/data_ruangan') }}">Data Unit/Ruangan</a></li>
         <li class="menu-item">
           <a href="#" class="has-chevron" data-toggle="collapse" data-target="#resume" aria-expanded="false" aria-controls="resume">Data Resume</a>
           <ul id="resume" class="collapse" aria-labelledby="resume" data-parent="#pages">
@@ -226,9 +227,9 @@
       </ul>
       <ul id="eUks" class="collapse" aria-labelledby="eUks" data-parent="#side-nav-accordion">
         <li class="menu-item">
-          <a href="#" class="has-chevron" data-toggle="collapse" data-targetF="#screeningKes" aria-expanded="false" aria-controls="screeningKes">Screening Kesehatan Siswa Mandiri</a>
+          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#screeningKes" aria-expanded="false" aria-controls="screeningKes">Screening Kesehatan Siswa Mandiri</a>
           <ul id="screeningKes" class="collapse" aria-labelledby="screeningKes" data-parent="#pages">
-            {{-- <li> <a href="{{ url('#')}}">Data Screening</a> </li> --}}
+            <li> <a href="{{ url('/e-uks/skrining-kesehatan-siswa')}}" target="_blank">Kuesioner</a> </li>
             <li> <a href="{{ url('/admin/question')}}">Pertanyaan</a> </li>
             <li> <a href="{{ url('/admin/answer')}}">Jawaban</a> </li>
           </ul>
@@ -285,6 +286,7 @@
         <li class="menu-item">
           <a href="#" class="has-chevron" data-toggle="collapse" data-target="#SettingMunisasi" aria-expanded="false" aria-controls="SettingMunisasi">Setting</a>
           <ul id="SettingMunisasi" class="collapse" aria-labelledby="SettingMunisasi" data-parent="#pages">
+            <li> <a href="{{ url('#')}}">List Imunisasi</a> </li>
             <li> <a href="{{ url('#')}}">PJ E-Munisasi</a> </li>
             <li> <a href="{{ url('#')}}">PJ KIPI</a> </li>
           </ul>
@@ -315,15 +317,6 @@
           <ul id="kipiMunisasi" class="collapse" aria-labelledby="kipiMunisasi" data-parent="#pages">
             <li> <a href="{{ url('#')}}">Data KIPI</a> </li>
             <li> <a href="{{ url('#')}}">Rekapitulasi</a> </li>
-          </ul>
-        </li>
-      </ul>
-      <ul id="eMunisasi" class="collapse" aria-labelledby="eMunisasi" data-parent="#side-nav-accordion">
-        <li class="menu-item">
-          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#vaksinMunisasi" aria-expanded="false" aria-controls="vaksinMunisasi">Vaksin</a>
-          <ul id="vaksinMunisasi" class="collapse" aria-labelledby="vaksinMunisasi" data-parent="#pages">
-            <li> <a href="{{ url('#')}}">Data Stock</a> </li>
-            <li> <a href="{{ url('#')}}">Analisis</a> </li>
           </ul>
         </li>
       </ul>
@@ -406,26 +399,19 @@
         <li class="menu-item">
           <a href="#" class="has-chevron" data-toggle="collapse" data-target="#settingMutu" aria-expanded="false" aria-controls="settingMutu">Setting</a>
           <ul id="settingMutu" class="collapse" aria-labelledby="settingMutu" data-parent="#pages">
-            <li> <a href="{{ url('#')}}">Topik</a> </li>
-            <li> <a href="{{ url('#')}}">PJ Topik</a> </li>
+            <li> <a href="{{ url('#')}}">Data Grup</a> </li>
+            <li> <a href="{{ url('#')}}">Data Trigger</a> </li>
           </ul>
         </li>
       </ul>
       <ul id="eMutu" class="collapse" aria-labelledby="eMutu" data-parent="#side-nav-accordion">
         <li class="menu-item">
-          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#RegistrasiMutu" aria-expanded="false" aria-controls="RegistrasiMutu">Registrasi</a>
+          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#RegistrasiMutu" aria-expanded="false" aria-controls="RegistrasiMutu">Index Nasional Mutu</a>
           <ul id="RegistrasiMutu" class="collapse" aria-labelledby="RegistrasiMutu" data-parent="#pages">
-            <li> <a href="{{ url('#')}}">Data Cabang</a> </li>
-            <li> <a href="{{ url('#')}}">Data Karakteristik</a> </li>
-            <li> <a href="{{ url('#')}}">Index Nasional Mutu</a> </li>
+            <li> <a href="{{ url('#')}}">Form Input INM</a> </li>
+            <li> <a href="{{ url('#')}}">Data INM</a> </li>
           </ul>
         </li>
-      </ul>
-      <ul id="eMutu" class="collapse" aria-labelledby="eMutu" data-parent="#side-nav-accordion">
-        <li> <a href="{{ url('#') }}">Analisis</a></li>
-      </ul>
-      <ul id="eMutu" class="collapse" aria-labelledby="eMutu" data-parent="#side-nav-accordion">
-        <li> <a href="{{ url('#') }}">Respon</a></li>
       </ul>
     </li>
     <!-- /E-Mutu -->
@@ -439,15 +425,15 @@
         <li class="menu-item">
           <a href="#" class="has-chevron" data-toggle="collapse" data-target="#settingAduan" aria-expanded="false" aria-controls="settingAduan">Setting</a>
           <ul id="settingAduan" class="collapse" aria-labelledby="settingAduan" data-parent="#pages">
-            <li> <a href="{{ url('admin/namaGrup-eAduan')}}">Nama Grup</a> </li>
+            <li> <a href="{{ url('admin/grup-EAduan')}}">Nama Grup</a> </li>
           </ul>
         </li>
       </ul>
       <ul id="eAduan" class="collapse" aria-labelledby="eAduan" data-parent="#side-nav-accordion">
-        <li> <a href="{{ url('admin/aduan') }}">Data Aduan</a></li>
+        <li> <a href="{{ url('/e-aduan/aduan') }}" target="_blank">Form Input Aduan</a></li>
       </ul>
       <ul id="eAduan" class="collapse" aria-labelledby="eAduan" data-parent="#side-nav-accordion">
-        <li> <a href="{{ url('#') }}">Respon</a></li>
+        <li> <a href="{{ url('admin/data-aduan') }}">Data Aduan</a></li>
       </ul>
     </li>
     <!-- /E-Aduan -->
@@ -523,20 +509,55 @@
       <a href="#" class="has-chevron" data-toggle="collapse" data-target="#eScreening" aria-expanded="false" aria-controls="eScreening">
         <span><i class="fas fa-stethoscope"></i>E-Screening</span>
       </a>
-      {{-- <ul id="eScreening" class="collapse" aria-labelledby="eScreening" data-parent="#side-nav-accordion">
+      <ul id="eScreening" class="collapse" aria-labelledby="eScreening" data-parent="#side-nav-accordion">
         <li class="menu-item">
-          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#settingAduan" aria-expanded="false" aria-controls="settingAduan">Setting</a>
-          <ul id="settingAduan" class="collapse" aria-labelledby="settingAduan" data-parent="#pages">
-            <li> <a href="{{ url('#')}}">Nama Grup</a> </li>
+          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#settingScreening" aria-expanded="false" aria-controls="settingScreening">Setting</a>
+          <ul id="settingScreening" class="collapse" aria-labelledby="settingScreening" data-parent="#pages">
+            <li> <a href="{{ url('#')}}">Data Wilayah</a> </li>
+            <li> <a href="{{ url('#')}}">Penanggung Jawab</a> </li>
           </ul>
         </li>
       </ul>
       <ul id="eScreening" class="collapse" aria-labelledby="eScreening" data-parent="#side-nav-accordion">
-        <li> <a href="{{ url('#') }}">Data Aduan</a></li>
+        <li class="menu-item">
+          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#screening_gizi" aria-expanded="false" aria-controls="screening_gizi">Screening Gizi</a>
+          <ul id="screening_gizi" class="collapse" aria-labelledby="screening_gizi" data-parent="#pages">
+            <li> <a href="{{ url('#')}}">Kuesioner</a> </li>
+            <li> <a href="{{ url('#')}}"  target="_blank">Data Kuesioner</a> </li>
+            <li> <a href="{{ url('#')}}">Analisis</a> </li>
+          </ul>
+        </li>
       </ul>
       <ul id="eScreening" class="collapse" aria-labelledby="eScreening" data-parent="#side-nav-accordion">
-        <li> <a href="{{ url('#') }}">Respon</a></li>
-      </ul> --}}
+        <li class="menu-item">
+          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#screening_tb" aria-expanded="false" aria-controls="screening_tb">Screening TB</a>
+          <ul id="screening_tb" class="collapse" aria-labelledby="screening_tb" data-parent="#pages">
+            <li> <a href="{{ url('#')}}">Kuesioner</a> </li>
+            <li> <a href="{{ url('#')}}"  target="_blank">Data Kuesioner</a> </li>
+            <li> <a href="{{ url('#')}}">Analisis</a> </li>
+          </ul>
+        </li>
+      </ul>
+      <ul id="eScreening" class="collapse" aria-labelledby="eScreening" data-parent="#side-nav-accordion">
+        <li class="menu-item">
+          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#screening_ibu_hamil" aria-expanded="false" aria-controls="screening_ibu_hamil">Screening Ibu Hamil Risiko Tinggi</a>
+          <ul id="screening_ibu_hamil" class="collapse" aria-labelledby="screening_ibu_hamil" data-parent="#pages">
+            <li> <a href="{{ url('#')}}">Kuesioner</a> </li>
+            <li> <a href="{{ url('#')}}"  target="_blank">Data Kuesioner</a> </li>
+            <li> <a href="{{ url('#')}}">Analisis</a> </li>
+          </ul>
+        </li>
+      </ul>
+      <ul id="eScreening" class="collapse" aria-labelledby="eScreening" data-parent="#side-nav-accordion">
+        <li class="menu-item">
+          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#screening_jiwa" aria-expanded="false" aria-controls="screening_jiwa">Screening Jiwa</a>
+          <ul id="screening_jiwa" class="collapse" aria-labelledby="screening_jiwa" data-parent="#pages">
+            <li> <a href="{{ url('#')}}">Kuesioner</a> </li>
+            <li> <a href="{{ url('#')}}"  target="_blank">Data Kuesioner</a> </li>
+            <li> <a href="{{ url('#')}}">Analisis</a> </li>
+          </ul>
+        </li>
+      </ul>
     </li>
     <!-- E-Screening -->
 
@@ -549,18 +570,24 @@
         <li class="menu-item">
           <a href="#" class="has-chevron" data-toggle="collapse" data-target="#settingPerkesmas" aria-expanded="false" aria-controls="settingPerkesmas">Setting</a>
           <ul id="settingPerkesmas" class="collapse" aria-labelledby="settingPerkesmas" data-parent="#pages">
-            <li> <a href="{{ url('admin/wilayah-ePerkesmas')}}">Data Wilayah</a> </li>
-            <li> <a href="{{ url('admin/penanggungjawab-ePerkesmas')}}">Penanggung Jawab</a> </li>
+            <li> <a href="{{ url('admin/wilayah-eperkesmas')}}">Data Wilayah</a> </li>
+            <li> <a href="{{ url('admin/penanggungjawab-eperkesmas')}}">Penanggung Jawab</a> </li>
           </ul>
         </li>
+      </ul>
+      <ul id="ePerkesmas" class="collapse" aria-labelledby="ePerkesmas" data-parent="#side-nav-accordion">
+        <li> <a href="{{ url('/e-perkesmas/request-kunjungan') }}" target="_blank">Form Request</a></li>
+      </ul>
+      <ul id="ePerkesmas" class="collapse" aria-labelledby="ePerkesmas" data-parent="#side-nav-accordion">
+        <li> <a href="{{ url('admin/validasi-kunjungan-eperkesmas') }}">Request Validasi</a></li>
       </ul>
       <ul id="ePerkesmas" class="collapse" aria-labelledby="ePerkesmas" data-parent="#side-nav-accordion">
         <li class="menu-item">
           <a href="#" class="has-chevron" data-toggle="collapse" data-target="#validasiPerkesmas" aria-expanded="false" aria-controls="validasiPerkesmas">Validasi</a>
           <ul id="validasiPerkesmas" class="collapse" aria-labelledby="validasiPerkesmas" data-parent="#pages">
-            <li> <a href="{{ url('#')}}">Data Valid</a> </li>
-            <li> <a href="{{ url('#')}}">Data Invalid</a> </li>
-            <li> <a href="{{ url('#')}}">Rekapitulasi</a> </li>
+            <li> <a href="{{ url('admin/pasien-valid-eperkesmas')}}">Data Valid</a> </li>
+            <li> <a href="{{ url('admin/pasien-invalid-eperkesmas')}}">Data Invalid</a> </li>
+            <li> <a href="{{ url('admin/rekapitulasi_E-Home-Care')}}">Rekapitulasi</a> </li>
           </ul>
         </li>
       </ul>

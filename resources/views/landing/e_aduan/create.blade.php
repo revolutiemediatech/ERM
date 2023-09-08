@@ -20,7 +20,7 @@
                     <div class="breadcrumb-content d-flex flex-wrap align-items-center justify-content-between">
                         <div class="section-heading text-left">
                             <h2 class="sec__title">Aduan</h2>
-                            <p class="sec__desc font-weight-regular pb-2">Kuesioner Mengenai Aduan</p>
+                            <p class="sec__desc font-weight-regular pb-2">Kuesioner Mengenai Layanan Aduan</p>
                         </div>
                     </div><!-- end breadcrumb-content -->
                 </div><!-- end col-lg-12 -->
@@ -33,7 +33,7 @@
 </section><!-- end breadcrumb-area -->
 <div class="row justify-content-center pt-4">
     <div class="col-lg-8">
-        <form action="{{ url("/e-aduan/aduan/store/", []) }}" method="post">
+        <form action="{{ url("/e-aduan/aduan/store/", []) }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-box">
                 <div class="form-title-wrap">
@@ -43,9 +43,9 @@
                     </h3>
                 </div>
                 <div class="form-content contact-form-action row">
-                    <div class="col-lg-12 responsive-column">
+                    <div class="col-lg-6 responsive-column">
                         <div class="input-box">
-                            <label class="label-text">Nama Lengkap<span class="text-danger">*</span></label>
+                            <label class="label-text">Nama Lengkap(Optional)</label>
                             <div class="form-group">
                                 <span class="la la-user form-icon"></span>
                                 <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap">
@@ -57,7 +57,7 @@
                             <label class="label-text">No HP<span class="text-danger">*</span></label>
                             <div class="form-group">
                                 <span class="la la-user form-icon"></span>
-                                <input type="number" class="form-control" name="no_hp" placeholder="No HP">
+                                <input type="number" class="form-control" name="no_hp" placeholder="No HP" required>
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                             <label class="label-text">Faskes<span class="text-danger">*</span></label>
                             <div class="form-group select-contain w-100">
                                 <div class="dropdown bootstrap-select select-contain-select">
-                                    <select class="select-contain-select" name="idFaskes">
+                                    <select class="select-contain-select" name="idFaskes" required>
                                         <option value="">Pilih Faskes</option>
                                         @foreach ($faskes as $f)
                                             <option value="{{ $f->id }}">{{ $f->nama }}</option>
@@ -76,12 +76,33 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12 responsive-column">
+                    <div class="col-lg-6 responsive-column">
+                        <div class="input-box">
+                            <label class="label-text">Bagian Pelayanan<span class="text-danger">*</span></label>
+                            <div class="form-group select-contain w-100">
+                                <div class="dropdown bootstrap-select select-contain-select">
+                                    <select class="select-contain-select" name="bagian_pelayanan" required>
+                                        <option value="">Pilih Bagian Pelayanan</option>
+                                        <option value="Pendaftaran">Pendaftaran</option>
+                                        <option value="Poli Umum">Poli Umum</option>
+                                        <option value="Tindakan Gawat Darurat">Tindakan Gawat Darurat</option>
+                                        <option value="KIA,KB dan Imunisasi">KIA,KB dan Imunisasi</option>
+                                        <option value="Poli Infeksius">Poli Infeksius</option>
+                                        <option value="Poli Gigi dan Mulut">Poli Gigi dan Mulut</option>
+                                        <option value="Komunikasi & Edukasi">Komunikasi & Edukasi</option>
+                                        <option value="Laboratorium">Laboratorium</option>
+                                        <option value="Farmasi">Farmasi</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 responsive-column">
                         <div class="input-box">
                             <label class="label-text">Keluhan<span class="text-danger">*</span></label>
                             <div class="form-group">
                                 <span class="la la-user form-icon"></span>
-                                <textarea class="form-control" name="keluhan" id="keluhan" rows="4"></textarea>
+                                <textarea class="form-control" name="keluhan" id="keluhan" rows="4" required></textarea>
                             </div>
                         </div>
                     </div>

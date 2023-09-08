@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Admin\EKonsultasi;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,10 +13,10 @@ class PJKonsultasi extends Controller
 {
     // Untuk panggil view
     private $views      = 'admin/eKonsultasi/pj';
-
+    
     // Untuk keperluan redirect, hubungannya route / file web
     private $url        = 'admin/penanggungjawab-eKonsultasi';
-
+    
     // Title head
     private $title      = 'Halaman Data Penanggung Jawab E-Konsultasi';
 
@@ -34,11 +33,11 @@ class PJKonsultasi extends Controller
         $where = [
             'status'    => 1,
             'idFaskes'  => session()->get('idFaskes'),
-        ];
+        ]; 
         $penanggung_jawab = PJKonsultasiModel::where($where)->first(); // cari kepsek yg statusnya 1
-        if (isset($penanggung_jawab)) {
+        if(isset($penanggung_jawab)){
             $users = UserModel::where('id', $penanggung_jawab['idUsers'])->get(); // tampilkan data guru sebagai kepsek
-        } else {
+        }else{
             $users = null;
         }
         $topik = TopikEKonsultasiModel::all();
@@ -95,20 +94,20 @@ class PJKonsultasi extends Controller
 
         // cek ada guru yg sama di tabel kepsek tidak
         $where2 = [
-            'idFaskes' => session()->get('idFaskes'),
+            'idFaskes'=> session()->get('idFaskes'),
             'idUsers' => $request->idUsers
         ];
         $penanggung_jawab = PJKonsultasiModel::where($where2)->first();
-        if (isset($penanggung_jawab)) { // kalo ada, update status. bukan tambah data guru di tabel kepsek
+        if (isset($penanggung_jawab)){ // kalo ada, update status. bukan tambah data guru di tabel kepsek
             $where1 = [
-                'idFaskes' => session()->get('idFaskes'),
+                'idFaskes'=> session()->get('idFaskes'),
                 'idUsers' => $request->idUsers
             ];
             $dataStatus1 = [
                 'status'    => 1 // update status guru tsb di tabel kepsek jadi 1
             ];
             PJKonsultasiModel::where($where1)->update($dataStatus1);
-        } else { // kalo data guru tsb di tabel kepsek tidak ada, baru tambah baru. jadi gag ada nama yg sama di tabel kepsek
+        }else{ // kalo data guru tsb di tabel kepsek tidak ada, baru tambah baru. jadi gag ada nama yg sama di tabel kepsek
             // tambah data sekaligus aktifkan jadi status 1
             $dataPj = [
                 // 'idPSekolah'      => $request->idPSekolah,
@@ -148,9 +147,9 @@ class PJKonsultasi extends Controller
             'id' => 'required',
             'idFaskes' => 'required',
         ]);
-
+        
         $dataPj = [
-            'idFaskes'  => $request->idFaskes,
+            'idFaskes'  => $request->idFaskes,    
             'idUsers'   => $request->idUsers,
         ];
         PJKonsultasiModel::where('id', $request->id)->update($dataPj);
